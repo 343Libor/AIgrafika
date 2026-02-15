@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AIgrafika | AI úprava fotografií zdarma</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+body{background:#0f172a;color:white;scroll-behavior:smooth;}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 10%;background:#0b1120;position:sticky;top:0;z-index:1000;}
+.logo{font-size:1.5rem;font-weight:700;}
+.lang-btn{cursor:pointer;padding:6px 12px;border:1px solid #6366f1;border-radius:6px;margin-left:10px;}
+.hero{height:90vh;background:url('https://images.unsplash.com/photo-1535223289827-42f1e9919769') center/cover no-repeat;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 20px;}
+.hero h1{font-size:3rem;margin-bottom:20px;}
+.hero p{max-width:600px;margin-bottom:30px;}
+.btn{background:#6366f1;padding:14px 28px;border-radius:8px;text-decoration:none;color:white;font-weight:600;}
+section{padding:80px 10%;}
+h2{text-align:center;margin-bottom:40px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;}
+.card{background:#1e293b;padding:30px;border-radius:12px;text-align:center;}
+.card img{width:100%;border-radius:10px;margin-bottom:15px;}
+form{display:flex;flex-direction:column;gap:15px;max-width:500px;margin:auto;}
+input,select,textarea,button{padding:12px;border-radius:6px;border:none;}
+input,select,textarea{background:#1e293b;color:white;}
+button{background:#6366f1;color:white;font-weight:600;cursor:pointer;}
+small{display:block;margin-top:-10px;margin-bottom:10px;}
+#form-result{margin-top:15px;text-align:center;font-weight:600;}
+footer{text-align:center;padding:30px;background:#0b1120;margin-top:50px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">AIgrafika</div>
+  <div>
+    <span class="lang-btn" onclick="setLang('cs')">CZ</span>
+    <span class="lang-btn" onclick="setLang('en')">EN</span>
+  </div>
+</header>
+
+<section class="hero">
+  <h1 id="hero-title">AIgrafika – Proměň svou fotku zdarma</h1>
+  <p id="hero-desc">Nahraj fotografii, vyber styl a během několika dnů ti pošleme hotový obrázek e-mailem. Jednoduché, rychlé a 100% zdarma.</p>
+  <a href="#order" class="btn" id="hero-btn">Objednat zdarma</a>
+</section>
+
+<section>
+<h2 id="services-title">Naše služby</h2>
+<div class="grid">
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Změna pozadí" />
+    <h3>Změna pozadí</h3>
+    <p>Přeneseme tě kamkoliv – pláž, město nebo fantasy svět.</p>
+  </div>
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1612831455545-ff3e0c9c1b3c" alt="Kreslený obrázek" />
+    <h3>Kreslený obrázek</h3>
+    <p>Digitální art, cartoon, ilustrace – zdarma pro každého.</p>
+  </div>
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f" alt="Karikatura" />
+    <h3>Karikatura</h3>
+    <p>Vtipné karikatury a stylizace tvé fotky AI.</p>
+  </div>
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1601933471533-c00bbf7b421c" alt="Filmový styl" />
+    <h3>Filmový styl</h3>
+    <p>Cinematic look jako z Hollywood filmu – zdarma.</p>
+  </div>
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1593642634367-d91a135587b5" alt="Digitální malba" />
+    <h3>Digitální malba</h3>
+    <p>Přeměň své fotografie do uměleckého digitálního malířského stylu.</p>
+  </div>
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1624480437117-6e1f0d5809b1" alt="Futuristický styl" />
+    <h3>Futuristický styl</h3>
+    <p>AI stylizace do sci-fi, cyberpunk nebo futuristického umění.</p>
+  </div>
+</div>
+</section>
+
+<section id="order">
+<h2 id="order-title">Objednávka</h2>
+<form id="contact-form">
+  <input type="text" name="fi-sender-firstName" placeholder="Tvé jméno" required />
+  <input type="text" name="fi-sender-lastName" placeholder="Příjmení" required />
+  <input type="email" name="fi-sender-email" placeholder="Tvůj e-mail" required />
+
+  <!-- URL fotky s návodem -->
+  <input type="url" name="fi-text-photo-url" placeholder="URL tvé fotografie" required />
+  <small style="color:#a5b4fc;">Nejprve nahraj obrázek zdarma na <a href="https://imgur.com/upload" target="_blank" style="color:#6366f1;text-decoration:underline;">Imgur</a> a vlož sem jeho URL.</small>
+
+  <select name="fi-select-style" required>
+    <option value="">Vyber styl úpravy</option>
+    <option value="background">Změna pozadí</option>
+    <option value="cartoon">Kreslený obrázek</option>
+    <option value="caricature">Karikatura</option>
+    <option value="cinematic">Filmový styl</option>
+    <option value="digital_paint">Digitální malba</option>
+    <option value="futuristic">Futuristický styl</option>
+  </select>
+
+  <textarea name="fi-text-description" rows="4" placeholder="Popis úpravy (např. chci pláž při západu slunce)" required></textarea>
+  <button type="submit">Odeslat objednávku</button>
+</form>
+<p id="form-result"></p>
+</section>
+
+<footer>
+<p>© 2026 AIgrafika | Vytvořeno s pomocí AI</p>
+</footer>
+
+<!-- Forminit SDK -->
+<script src="https://forminit.com/sdk/v1/forminit.js"></script>
+<script>
+  const forminit = new Forminit();
+  const FORM_ID = 'yhdjdhoqhxp';
+
+  const form = document.getElementById('contact-form');
+  const resultEl = document.getElementById('form-result');
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    resultEl.textContent = '';
+
+    const formData = new FormData(form);
+
+    const { data, error } = await forminit.submit(FORM_ID, formData);
+
+    if (error) {
+      resultEl.style.color = '#f87171';
+      resultEl.textContent = 'Chyba při odesílání: ' + error.message;
+      return;
+    }
+
+    resultEl.style.color = '#4ade80';
+    resultEl.textContent = 'Objednávka byla odeslána! Děkujeme.';
+    form.reset();
+  });
+
+  function setLang(lang) {
+    if(lang==='en'){
+      document.getElementById('hero-title').innerText="AIgrafika – Transform your photo for free";
+      document.getElementById('hero-desc').innerText="Upload your photo, choose a style and receive the edited image by email in a few days. Simple, fast and 100% free.";
+      document.getElementById('hero-btn').innerText="Order for free";
+      document.getElementById('services-title').innerText="Our Services";
+      document.getElementById('order-title').innerText="Order";
+      form.querySelector('[name="fi-sender-firstName"]').placeholder="First name";
+      form.querySelector('[name="fi-sender-lastName"]').placeholder="Last name";
+      form.querySelector('[name="fi-sender-email"]').placeholder="Email";
+      form.querySelector('[name="fi-text-photo-url"]').placeholder="Photo URL";
+      form.querySelector('[name="fi-text-description"]').placeholder="Description of the edit";
+      form.querySelector('[name="fi-select-style"]').options[0].text="Select style";
+      form.querySelector('button[type="submit"]').textContent="Send order";
+    } else {
+      document.getElementById('hero-title').innerText="AIgrafika – Proměň svou fotku zdarma";
+      document.getElementById('hero-desc').innerText="Nahraj fotografii, vyber styl a během několika dnů ti pošleme hotový obrázek e-mailem. Jednoduché, rychlé a 100% zdarma.";
+      document.getElementById('hero-btn').innerText="Objednat zdarma";
+      document.getElementById('services-title').innerText="Naše služby";
+      document.getElementById('order-title').innerText="Objednávka";
+      form.querySelector('[name="fi-sender-firstName"]').placeholder="Tvé jméno";
+      form.querySelector('[name="fi-sender-lastName"]').placeholder="Příjmení";
+      form.querySelector('[name="fi-sender-email"]').placeholder="Tvůj e-mail";
+      form.querySelector('[name="fi-text-photo-url"]').placeholder="URL tvé fotografie";
+      form.querySelector('[name="fi-text-description"]').placeholder="Popis úpravy (např. chci pláž při západu slunce)";
+      form.querySelector('[name="fi-select-style"]').options[0].text="Vyber styl úpravy";
+      form.querySelector('button[type="submit"]').textContent="Odeslat objednávku";
+    }
+  }
+</script>
+
+</body>
+</html>
